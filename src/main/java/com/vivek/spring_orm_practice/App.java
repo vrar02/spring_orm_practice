@@ -9,6 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.ComponentScan;
 
 import java.util.Arrays;
+import java.util.List;
 
 @ComponentScan(basePackages = "com.vivek.spring_orm_practice")
 public class App
@@ -24,9 +25,20 @@ public class App
 
         System.out.println(studentDao.get(112));
 
-        Student student=new Student(117,"hemant","banglore");
+        Student student=new Student(119,"hemant","banglore");
 
         studentDao.save(student);
+
+        student.setName("hemanth");
+        studentDao.update(student);
+
+        List<Student> all = studentDao.getAll();
+        for(Student student1:all ){
+            System.out.println(student1);
+        }
+
+        studentDao.delete(118);
+
 
     }
 }
